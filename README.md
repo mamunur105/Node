@@ -1,1 +1,6 @@
-https://www.youtube.com/watch?v=d5WgYUqUdmE&list=PL_XxuZqN0xVDHFj-ecFSU0SU-B0TuJRk9&index=17
+FreamWork list : 
+https://scotch.io/bar-talk/10-node-frameworks-to-use-in-2019
+
+
+
+https://www.youtube.com/watch?v=jxQdFmW69GA&list=PL_XxuZqN0xVDHFj-ecFSU0SU-B0TuJRk9&index=27
