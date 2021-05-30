@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const morgan = require('morgan');
 
+const PORT = process.env.PORT || 8080;
+app.use( morgan('dev') )
 // Route
 
 app.get('/about', (req, res) => {
