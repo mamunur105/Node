@@ -3,10 +3,10 @@ const app = express();
 const morgan = require('morgan');
 
 const PORT = process.env.PORT || 8080;
-app.use( morgan('dev') )
+// app.use( morgan('dev') ) // Global route Middleware 
 // Route
 
-app.get('/about', (req, res) => {
+app.get('/about', morgan('dev'), (req, res) => {
 	res.send('Welcome to about page!');
 });
 app.get('/json', (req, res) => {
