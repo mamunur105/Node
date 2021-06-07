@@ -7,11 +7,9 @@ const {
 	deleteContactById
 } = require('../controller/contactController')
 router.get('/', getAllContacts)
-router.get('/delete/:id', deleteContactById)
-
 router.post('/', createContact)
 router.get('/:id', getContactById)
 router.put('/:id', updateContactById )
-// router.delete('/:id', deleteContactById)
+router.delete('/:id', deleteContactById)
 
 module.exports = router 
