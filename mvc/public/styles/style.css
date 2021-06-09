@@ -1,9 +1,28 @@
+:root{
+	--body-color: #f1f1f1;
+	--black: #212529;
+	--white: #fff;
+}
+body{
+	background: var(--body-color)
+}
+.mt-50{
+	margin-top: 50px;
+}
+.mb-50{
+	margin-bottom: 50px;
+}
+.my-50{
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
 .website-main-body{
 	min-height: 900px;
 }
 footer{
-	background-color: #212529;
+	background-color: var( --black );
 	text-align: center;
-	color: #fff;
+	color: var(--white);
 	padding: 20px 15px 10px;
 }

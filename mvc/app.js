@@ -1,5 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
+// Import Route 
+const authRouter = require('./routes/authRoute')
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -15,15 +19,27 @@ const middleware = [
 app.use( middleware )
 
 // User router start
+app.use('/auth', authRouter );
+
 app.get('/', (req, res) => {
-	res.render('pages/auth/signup', { title: 'Create A New Account' });
+	res.json({
+		message: "Hello World"
+	})
 });
 app.get('*', (req, res) => {
 	res.send('<h1>404 Not Found</h1>');
 });
 
-
 app.listen(PORT, () => {
 	console.log(`Server Is running on port ${PORT}`);
 });
+// mongoose.connect('mongodb+srv://mamunur105:oR7uGhfndPj56cZS@cluster0.hlwdc.mongodb.net/Cluster0?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+// .then( () => {
+// 	app.listen(PORT, () => {
+// 		console.log(`Server Is running on port ${PORT}`);
+// 	});
+// })
+// .catch( err => {
+// 	console.log( err )
+// })
 
