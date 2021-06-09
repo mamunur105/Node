@@ -1,0 +1,9 @@
+.website-main-body{
+	min-height: 900px;
+}
+footer{
+	background-color: #212529;
+	text-align: center;
+	color: #fff;
+	padding: 20px 15px 10px;
+}
