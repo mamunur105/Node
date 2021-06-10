@@ -30,16 +30,14 @@ app.get('*', (req, res) => {
 	res.send('<h1>404 Not Found</h1>');
 });
 
-app.listen(PORT, () => {
-	console.log(`Server Is running on port ${PORT}`);
-});
-// mongoose.connect('mongodb+srv://mamunur105:oR7uGhfndPj56cZS@cluster0.hlwdc.mongodb.net/Cluster0?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
-// .then( () => {
-// 	app.listen(PORT, () => {
-// 		console.log(`Server Is running on port ${PORT}`);
-// 	});
-// })
-// .catch( err => {
-// 	console.log( err )
-// })
+mongoose.connect('mongodb+srv://mvcuser:oR7uGhfndPj56cZS@cluster0.kjaj7.mongodb.net/Cluster0?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+.then( () => {
+	console.log('Database Connected')
+	app.listen(PORT, () => {
+		console.log(`Server Is running on port ${PORT}`);
+	});
+})
+.catch( err => {
+	console.log( err )
+})
 
