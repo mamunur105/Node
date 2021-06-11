@@ -1,0 +1,40 @@
+<%- include('../partials/head.ejs') %>
+
+	<div class="signup-wraper my-50">
+		<div class="container">
+			<div class="col-md-6 offset-md-3  ">
+				<div class="card card-body">
+					<form class="row g-3" action="/playground/validator" method="POST">
+						<div class="form-group">
+							<label for="Username" class="form-label">Username</label>
+							<input type="text" name="username" class="form-control" id="Username">
+						</div>
+						<div class="form-group">
+							<label for="inputEmail4" class="form-label">Email</label>
+							<input type="email" name="email" class="form-control" id="inputEmail4">
+						</div>
+						<div class="form-group">
+							<label for="inputPassword4" class="form-label">Password</label>
+							<input type="password" name="password" class="form-control" id="inputPassword4">
+						</div>
+						<div class="form-group">
+							<label for="confirminputPassword4" class="form-label">Confirm Password</label>
+							<input type="password" name="confirmpassword" class="form-control" id="confirminputPassword4">
+						</div>
+						<div class="col-12">
+							<input type="submit" value="Signup" class="btn btn-primary" />
+							<br>
+								Already have an account ? <a href="/auth/login"> Login </a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<%- include('../partials/footer.ejs') %>
+		</body>
+
+		</html>
