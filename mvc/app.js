@@ -6,7 +6,6 @@ const authRouter = require('./routes/authRoute')
 
 // Playground Route
 const app = express();
-const validatorRoute = require('./playground/validator')
 
 const PORT = process.env.PORT || 8080;
 app.set( 'view engine', 'ejs')
@@ -22,8 +21,6 @@ app.use( middleware )
 
 // User router start
 app.use('/auth', authRouter );
-
-app.use('/playground', validatorRoute ); //
 
 app.get('/', (req, res) => {
 	res.json({
