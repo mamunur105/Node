@@ -7,19 +7,31 @@
 					<form class="row g-3" action="/auth/signup" method="POST">
 						<div class="form-group">
 							<label for="Username" class="form-label">Username</label>
-							<input type="text" name="username" class="form-control" id="Username">
+							<input type="text" name="username" class="form-control <%= error.username ? 'is-invalid' : '' %>" id="Username" value="<%= value.username ? value.username : '' %>">
+							<div class="invalid-feedback">
+								<%= error.username ? error.username : '' %>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputEmail4" class="form-label">Email</label>
-							<input type="email" name="email" class="form-control" id="inputEmail4">
+							<input type="email" name="email" class="form-control <%= error.email ? 'is-invalid' : '' %>" id="inputEmail4" value="<%= value.email ? value.email : '' %>">
+							<div class="invalid-feedback">
+								<%= error.email ? error.email : '' %>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPassword4" class="form-label">Password</label>
-							<input type="password" name="password" class="form-control" id="inputPassword4">
+							<input type="password" name="password" class="form-control <%= error.password ? 'is-invalid' : '' %>" id="inputPassword4" value="<%= value.password ? value.password : '' %>">
+							<div class="invalid-feedback">
+								<%= error.password ? error.password : '' %>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="confirminputPassword4" class="form-label">Confirm Password</label>
-							<input type="password" name="confirmpassword" class="form-control" id="confirminputPassword4">
+							<input type="password" name="confirmPassword" class="form-control <%= error.confirmPassword ? 'is-invalid' : '' %>" id="confirminputPassword4">
+							<div class="invalid-feedback">
+								<%= error.confirmPassword ? error.confirmPassword : '' %>
+							</div>
 						</div>
 						<div class="col-12">
 							<input type="submit" value="Signup" class="btn btn-primary" />
