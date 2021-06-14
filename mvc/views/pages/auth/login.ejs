@@ -7,11 +7,17 @@
 					<form class="row g-3" action="/auth/login" method="POST">
 						<div class="form-group">
 							<label for="inputEmail4" class="form-label">Email</label>
-							<input type="email" name="email" class="form-control" id="inputEmail4">
+							<input type="email" name="email" class="form-control  <%= error.email ? 'is-invalid' : '' %>" id="inputEmail4" value="<%= value.email ? value.email : '' %>">
+							<div class="invalid-feedback">
+								<%= error.email ? error.email : '' %>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPassword4" class="form-label">Password</label>
-							<input type="password" name="password" class="form-control" id="inputPassword4">
+							<input type="password" name="password" class="form-control  <%= error.password ? 'is-invalid' : '' %>" id="inputPassword4" value="<%= value.password ? value.password : '' %>">
+							<div class="invalid-feedback">
+								<%= error.email ? error.email : '' %>
+							</div>
 						</div>
 						<div class="col-12">
 							<input type="submit" value="Login" class="btn btn-primary" />
