@@ -16,7 +16,7 @@
 							<label for="inputPassword4" class="form-label">Password</label>
 							<input type="password" name="password" class="form-control  <%= error.password ? 'is-invalid' : '' %>" id="inputPassword4" value="<%= value.password ? value.password : '' %>">
 							<div class="invalid-feedback">
-								<%= error.email ? error.email : '' %>
+								<%= error.password ? error.password : '' %>
 							</div>
 						</div>
 						<div class="col-12">
