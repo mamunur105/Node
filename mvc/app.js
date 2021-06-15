@@ -8,6 +8,12 @@ const authRouter = require('./routes/authRoute')
 // Playground Route
 const app = express();
 
+// Import MiddleWare 
+
+const { bindUserWithRequest } = require('./middleware/authMiddleware')
+const { setLocals } = require('./middleware/setLocals')
+
+
 const MONGO_DB_URI = `mongodb+srv://mvcuser:oR7uGhfndPj56cZS@cluster0.kjaj7.mongodb.net/Cluster0?retryWrites=true&w=majority`
 const store = new MongoDBStore({
 	uri: MONGO_DB_URI,
@@ -26,14 +32,16 @@ const middleware = [
 	express.urlencoded( {extended: true} ),
 	express.json(),
 	session({
-	secret: process.env.SECRET_KEY || 'SECRET_KEY',
-	resave: false,
-	saveUninitialized: false,
-	cookie: {
-		maxAge: 60 * 60 * 2 * 1000
-	},
-	store: store
-	})
+		secret: process.env.SECRET_KEY || 'SECRET_KEY',
+		resave: false,
+		saveUninitialized: false,
+		cookie: {
+			maxAge: 60 * 60 * 2 * 1000
+		},
+		store: store
+	}),
+	bindUserWithRequest(),
+	setLocals()
 ]
 app.use( middleware )
 

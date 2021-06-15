@@ -4,4 +4,4 @@ https://scotch.io/bar-talk/10-node-frameworks-to-use-in-2019
 
 
 
-https://www.youtube.com/watch?v=acM5aJST9h4&list=PL_XxuZqN0xVDHFj-ecFSU0SU-B0TuJRk9&index=135
+https://www.youtube.com/watch?v=FSsmolNLZCE&list=PL_XxuZqN0xVDHFj-ecFSU0SU-B0TuJRk9&index=137
