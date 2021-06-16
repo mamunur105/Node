@@ -5,12 +5,15 @@ const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session);
 // Import Route 
 const authRouter = require('./routes/authRoute')
+const dashboardRoute = require('./routes/dashboardRoute')
 // Playground Route
 const app = express();
 
 // Import MiddleWare 
 
-const { bindUserWithRequest } = require('./middleware/authMiddleware')
+const { 
+	bindUserWithRequest,
+} = require('./middleware/authMiddleware')
 const { setLocals } = require('./middleware/setLocals')
 
 
@@ -47,6 +50,7 @@ app.use( middleware )
 
 // User router start
 app.use('/auth', authRouter );
+app.use('/dashboard', dashboardRoute );
 
 app.get('/', (req, res) => {
 	res.json({
