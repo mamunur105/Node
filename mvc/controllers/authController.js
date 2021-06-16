@@ -32,14 +32,15 @@ exports.signupPostController = async ( req, res, next) => {
 		})
 		let createdUser = await user.save()
 		console.log("User Created Successfull", createdUser)
-		res.render('pages/auth/login', { title: "Login to your Account"})
+		// res.render('pages/auth/login', { title: "Login to your Account"})
+		return res.redirect('/auth/login')
 	} catch(e){
 		console.log( e )
 		next( e )
 	}
 }
 exports.loginGetController =  ( req, res, next) => {
-	console.log( "Message " , req.session )
+	// console.log( "Message " , req.session )
 	res.render('pages/auth/login', { title: "Login to your Account", error:{}, value:{} })
 }
 exports.loginPostController = async ( req, res, next) => {
