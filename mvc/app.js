@@ -1,19 +1,19 @@
 const express = require('express');
-const morgan = require('morgan');
 const mongoose = require('mongoose');
-const session = require('express-session')
-const MongoDBStore = require('connect-mongodb-session')(session);
 // Import Route
 const authRouter = require('./routes/authRoute')
 const dashboardRoute = require('./routes/dashboardRoute')
 // Playground Route
+// const PlaygroundRoute = require('./playground/validator')
+
 const app = express();
-
 // Import MiddleWare
+const morgan = require('morgan');
+const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
 
-const {
-	bindUserWithRequest,
-} = require('./middleware/authMiddleware')
+const { bindUserWithRequest } = require('./middleware/authMiddleware')
 const { setLocals } = require('./middleware/setLocals')
 
 
@@ -44,13 +44,15 @@ const middleware = [
 		store: store
 	}),
 	bindUserWithRequest(),
-	setLocals()
+	setLocals(),
+	flash()
 ]
 app.use( middleware )
 
 // User router start
 app.use('/auth', authRouter );
 app.use('/dashboard', dashboardRoute );
+// app.use('/playground', PlaygroundRoute );
 
 app.get('/', (req, res) => {
 	res.json({
