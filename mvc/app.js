@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 // Import Route
@@ -17,22 +18,18 @@ const { bindUserWithRequest } = require('./middleware/authMiddleware')
 const { setLocals } = require('./middleware/setLocals')
 
 
-const MONGO_DB_URI = `mongodb+srv://mvcuser:oR7uGhfndPj56cZS@cluster0.kjaj7.mongodb.net/Cluster0?retryWrites=true&w=majority`
+const MONGO_DB_URI = `mongodb+srv://${process.env.DB_ADMIN}:${process.env.DB_PASSWORD}@cluster0.kjaj7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
 const store = new MongoDBStore({
 	uri: MONGO_DB_URI,
 	collection: 'sessions',
 	expires: 60 * 60 * 2 * 1000
 });
 
-// console.log(process.env.NODE_ENV)
-// console.log( app.get('env') )
-
 const PORT = process.env.PORT || 8080;
 app.set( 'view engine', 'ejs')
 app.set( 'views', 'views')
 if( app.get('env').toLowerCase().trim() === 'development' ){
 	app.use( morgan('dev') )
-	console.log( " MOde ")
 }
 console.log( app.get('env').toLowerCase().toString() )
 const middleware = [
