@@ -24,13 +24,18 @@ const store = new MongoDBStore({
 	expires: 60 * 60 * 2 * 1000
 });
 
+// console.log(process.env.NODE_ENV)
+// console.log( app.get('env') )
 
 const PORT = process.env.PORT || 8080;
 app.set( 'view engine', 'ejs')
 app.set( 'views', 'views')
-
+if( app.get('env').toLowerCase().trim() === 'development' ){
+	app.use( morgan('dev') )
+	console.log( " MOde ")
+}
+console.log( app.get('env').toLowerCase().toString() )
 const middleware = [
-	morgan('dev'),
 	express.static('public'),
 	express.urlencoded( {extended: true} ),
 	express.json(),
