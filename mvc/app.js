@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // Import Route
 const authRouter = require('./routes/authRoute')
 const dashboardRoute = require('./routes/dashboardRoute')
+const config = require('config')
 // Playground Route
 // const PlaygroundRoute = require('./playground/validator')
 
@@ -17,27 +18,28 @@ const flash = require('connect-flash');
 const { bindUserWithRequest } = require('./middleware/authMiddleware')
 const { setLocals } = require('./middleware/setLocals')
 
+// console.log( config.get("db-name") )
 
-const MONGO_DB_URI = `mongodb+srv://${process.env.DB_ADMIN}:${process.env.DB_PASSWORD}@cluster0.kjaj7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const MONGO_DB_URI = `mongodb+srv://${config.get("db-admin")}:${config.get("db-password")}@cluster0.kjaj7.mongodb.net/${config.get("db-name")}?retryWrites=true&w=majority`
 const store = new MongoDBStore({
 	uri: MONGO_DB_URI,
 	collection: 'sessions',
 	expires: 60 * 60 * 2 * 1000
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.get("port") || 3000;
 app.set( 'view engine', 'ejs')
 app.set( 'views', 'views')
 if( app.get('env').toLowerCase().trim() === 'development' ){
 	app.use( morgan('dev') )
 }
-console.log( app.get('env').toLowerCase().toString() )
+// console.log( app.get('env').toLowerCase().toString() )
 const middleware = [
 	express.static('public'),
 	express.urlencoded( {extended: true} ),
 	express.json(),
 	session({
-		secret: process.env.SECRET_KEY || 'SECRET_KEY',
+		secret: config.get("secret"),
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
