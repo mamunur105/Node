@@ -21,6 +21,26 @@ setMiddleware( app )
 // Using Route 
 setRoute( app )
 
+app.use( (rq, res, next ) => {
+	let error = new Error('404 Not Found')
+	error.status = 404
+	next( error )
+})
+
+app.use((error, req, res, next )=>{
+	if( error.status === 404 ){
+		return res.render('pages/error/404', {
+			title: "404 Not Found",
+			flashMessage: {}
+		});
+	}
+	console.log( error )
+	res.render('pages/error/505', {
+			title: "Internal Server error",
+			flashMessage: {}
+		});
+})
+
 mongoose.connect( MONGO_DB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
 .then( () => {
 	console.log(chalk.green('Database Connected'))

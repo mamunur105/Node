@@ -17,20 +17,11 @@ const routes = [
 				message: "Hello World"
 			})
 		}
-	},
-	{
-		path: '*',
-		handler:  (req, res) => {
-			res.render('error/404', {
-				title: "404 Not Found",
-				flashMessage: {}
-			});
-		}
 	}
 ]
 module.exports = app => {
 	routes.forEach ( r => {
-		if( r.path === '/' ){
+		if( r.path === '/' || r.path === '*' ){
 			app.get(r.path , r.handler)
 		}else{
 			app.use(r.path , r.handler)
