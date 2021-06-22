@@ -34,6 +34,7 @@ app.use((error, req, res, next )=>{
 			flashMessage: {}
 		});
 	}
+	console.log( chalk.red.inverse( error.message ) )
 	console.log( error )
 	res.render('pages/error/505', {
 			title: "Internal Server error",

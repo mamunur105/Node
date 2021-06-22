@@ -1,6 +1,7 @@
 // Import Route
 const authRouter = require('./authRoute')
 const dashboardRoute = require('./dashboardRoute')
+const playground = require('../playground/play')
 const routes = [
 	{
 		path: '/auth',
@@ -9,6 +10,10 @@ const routes = [
 	{
 		path: '/dashboard',
 		handler: dashboardRoute
+	},
+	{
+		path: '/playground',
+		handler: playground
 	},
 	{
 		path: '/',
