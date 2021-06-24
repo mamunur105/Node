@@ -1,0 +1,87 @@
+<%- include('../../partials/head.ejs') %>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8 offset-md-2">
+					<div class="card card-body">
+						<div class="profile-pic">
+							<img class="img-thumbnail img-fluid" src="<%= user.profilePics %> " alt="Profile Photo" id="profilePics">
+						</div>
+						<form class="row g-3" action="/uploads/profilePics" method="POST">
+							<div class="form-group">
+								<input type="file" class="form-control-file" name="uploaded_file" accept="image/*">
+								<input 
+									type="button"
+									value="Remove Pics"
+									id="removeProfilePics"
+									class="bin btn-danger btn-sm my-2"
+									style="display: <%= user.profilePics.includes('avatar.png') ? 'none;':'block;' %>"
+								>
+							</div>
+						</form>
+					</div>
+					<div class="card card-body">
+						<form class="row g-3" action="/dashboard/create-profile" method="POST">
+							<div class="form-group">
+								<label for="inputName" class="form-label">Name</label>
+								<input id="inputName" type="text" class="form-control" name="name" >
+							</div>
+							<div class="form-group">
+								<label for="inputEmail" class="form-label">Email</label>
+								<input id="inputEmail" type="text" class="form-control" name="email" disabled >
+							</div>
+							<div class="form-group">
+								<label for="inputTitle" class="form-label">Title</label>
+								<input id="inputTitle" type="text" class="form-control" name="title" >
+							</div>
+							<div class="form-group">
+								<label for="inputBio" class="form-label">Bio</label>
+								<textarea class="form-control" name="bio" id="inputBio" ></textarea>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="Website"><i class="fas fa-globe"></i></span>
+									<input type="text" 
+									name="website" 
+									class="form-control" placeholder="Website" >
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="Facebook"><i class="fab fa-facebook-f"></i> </span>
+									<input type="text"
+									name="facebook"
+									class="form-control" placeholder="Facebook"  >
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="Twitter"><i class="fab fa-twitter"></i> </span>
+									<input type="text"
+									name="twitter"
+									class="form-control" placeholder="Twitter"  >
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="Github"><i class="fab fa-github"></i> </span>
+									<input type="text"
+									name="github"
+									class="form-control" placeholder="Github"  >
+								</div>
+							</div>
+							<div class="col-12">
+								<input type="submit" value="Submit" class="btn btn-primary" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%- include('../../partials/footer.ejs') %>
+</body>
+
+</html>
