@@ -1,5 +1,5 @@
 <%- include('../../partials/head.ejs') %>
-
+<link rel="stylesheet" href="/styles/croppie.css">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2"></div>
@@ -8,9 +8,9 @@
 						<div class="profile-pic">
 							<img class="img-thumbnail img-fluid" src="<%= user.profilePics %> " alt="Profile Photo" id="profilePics">
 						</div>
-						<form class="row g-3" action="/uploads/profilePics" method="POST">
+						<form id="profilepicsForm" class="row g-3" action="/uploads/profilePics" method="POST">
 							<div class="form-group">
-								<input type="file" class="form-control-file" name="uploaded_file" accept="image/*">
+								<input id="profilePicsFile" type="file" class="form-control-file" name="uploaded_file" accept="image/*">
 								<input 
 									type="button"
 									value="Remove Pics"
@@ -81,7 +81,38 @@
 		</div>
 	</div>
 
+
+	<div id="cropmodal" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div id="croperimage"></div>
+			</div>
+			<div class="modal-footer">
+				<button id="uploadimage" type="button" class="btn btn-primary">Upload imgage</button>
+				<button id="canselcropping" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<%- include('../../partials/footer.ejs') %>
+	
+	<script src="/scripts/croppie.js"></script>
+	<script src="/scripts/profilepicUpload.js"></script>
+
+
+
+
+
 </body>
 
 </html>
