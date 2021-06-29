@@ -4,6 +4,7 @@ const fs = require('fs')
 exports.uploadProfilePics = async (req, res, next) => {
 	if( req.file ){
 		try{
+			let oldProfilePics = req.user.profilePics
 			let profile = await Profile.findOne({ user: req.user._id })
 			let profilePics = `/uploads/${req.file.filename}`
 			if( profile ){
@@ -16,6 +17,13 @@ exports.uploadProfilePics = async (req, res, next) => {
 				{ _id: req.user._id },
 				{$set: { profilePics } }
 			)
+			if( oldProfilePics  !== '/uploads/avatar.png' ){
+				fs.unlink(`public${oldProfilePics}`,  err => {
+					if( err ){
+						console.log( err )
+					}
+				})
+			}
 			res.status(200).json({ profilePics })
 		
 		}catch( e ){
