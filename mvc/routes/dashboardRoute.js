@@ -17,7 +17,7 @@ router.get('/create-profile', isAuthenticated , createProfileGetController );
 router.post('/create-profile', isAuthenticated , profileValidator , createProfilePostController );
 
 router.get('/edit-profile', isAuthenticated , editfileGetController  );
-router.post('/edit-profile', isAuthenticated , editfilePostController  );
+router.post('/edit-profile', isAuthenticated ,profileValidator, editfilePostController  );
 
 // router.get('/', dashboardPostController );
 

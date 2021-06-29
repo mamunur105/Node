@@ -27,7 +27,7 @@ exports.createProfileGetController = async ( req, res, next) => {
 	try{
 		
 		let profile = await Profile.findOne( {
-			user: req.session.user._id
+			user: req.user._id
 		} )
 		if( profile ){
 			return res.redirect('/dashboard/edit-profile')
@@ -57,7 +57,7 @@ exports.createProfilePostController = async ( req, res, next) => {
 		twitter,
 		github
 	} = req.body
-	console.log( errors )
+	// console.log( errors )
 	if( !errors.isEmpty() ){
 		req.flash('fail', 'Please Check Your form')
 		return res.render('pages/dashboard/create-profile',
@@ -76,7 +76,13 @@ exports.createProfilePostController = async ( req, res, next) => {
 				flashMessage: Flash.getMessage( req )
 			}
 		)
-		
+	}
+
+	let profile = await Profile.findOne( {
+		user: req.session.user._id
+	} )
+	if( profile ){
+		return res.redirect('/dashboard/edit-profile')
 	}
 
 	try{
@@ -108,5 +114,101 @@ exports.createProfilePostController = async ( req, res, next) => {
 
 
 }
-exports.editfileGetController = async ( req, res, next) => { next() }
-exports.editfilePostController = async ( req, res, next) => { next() }
+exports.editfileGetController = async ( req, res, next) => { 
+		try{
+		let profile = await Profile.findOne( {
+			user: req.session.user._id
+		} )
+		if( ! profile ){
+			return res.redirect('/dashboard/create-profile')
+		}
+		let {
+			name,
+			title,
+			bio,
+			links: { website, facebook, twitter,github }
+		} = profile ;
+		return res.render('pages/dashboard/edit-profile',
+			{
+				title: "Edit Profile",
+				error: {},
+				value:{
+					name,
+					title,
+					bio,
+					website,
+					facebook,
+					twitter,
+					github
+				},
+				flashMessage: Flash.getMessage( req )
+			}
+		)
+	}catch ( e ){
+		next( e )
+	}
+	
+}
+exports.editfilePostController = async ( req, res, next) => { 
+	let errors = validationResult( req ).formatWith( errorFormater )
+	let {
+		name,
+		title,
+		bio,
+		website,
+		facebook,
+		twitter,
+		github
+	} = req.body
+	// console.log( errors )
+	if( !errors.isEmpty() ){
+		req.flash('fail', 'Please Check Your form')
+		return res.render('pages/dashboard/edit-profile',
+			{
+				title: "Edit Profile",
+				error: errors.mapped(),
+				value:{
+					name,
+					title,
+					bio,
+					website,
+					facebook,
+					twitter,
+					github
+				},
+				flashMessage: Flash.getMessage( req )
+			}
+		)
+	}
+
+	let profile = await Profile.findOne( {
+		user: req.user._id
+	} )
+	if( ! profile ){
+		return res.redirect('/dashboard/create-profile')
+	}
+
+	try{
+		let updatedProfile = await Profile.findOneAndUpdate(
+			{user: req.user._id },
+			{ $set: {
+					name,
+					title,
+					bio,
+					links:{
+						website: website ||  '',
+						facebook: facebook ||  '',
+						twitter: twitter ||  '',
+						github: github ||  ''
+					}
+				}
+			},
+			{new: true}
+		)
+		req.flash('success', 'Profile Edited Successfull')
+		return res.redirect('/dashboard/edit-profile')
+	} catch(e){
+		next( e )
+	}
+
+}

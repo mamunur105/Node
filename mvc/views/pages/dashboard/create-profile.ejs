@@ -32,7 +32,7 @@
 							</div>
 							<div class="form-group">
 								<label for="inputEmail" class="form-label">Email</label>
-								<input id="inputEmail" type="text" class="form-control" name="email" disabled >
+								<input id="inputEmail" type="text" class="form-control" name="email" value="<%= user.email  %> " disabled >
 							</div>
 							<div class="form-group">
 								<label for="inputTitle" class="form-label">Title</label>
@@ -53,7 +53,7 @@
 									<span class="input-group-text" id="Website"><i class="fas fa-globe"></i></span>
 									<input type="text" 
 									name="website" 
-									class="form-control <%= error.website ? 'is-invalid' : '' %>" placeholder="Website" value="<%= value.title ? value.title : '' %>">
+									class="form-control <%= error.website ? 'is-invalid' : '' %>" placeholder="Website" value="<%= value.website ? value.website : '' %>">
 									<div class="invalid-feedback">
 										<%= error.website ? error.website : '' %>
 									</div>

@@ -16,12 +16,12 @@ module.exports = [
 	.trim()
 	,
 	body('title').not().isEmpty().withMessage('Title Cant be empty')
-	.isLength( {max:100} ).withMessage('Title cant be More then 50')
+	.isLength( {max:100} ).withMessage('Title cant be More then 100')
 	.trim()
 	,
 
 	body('bio').not().isEmpty().withMessage('Bio Cant be empty')
-	.isLength( {max:500} ).withMessage('Title cant be More then 50')
+	.isLength( {max:500} ).withMessage('Bio can\'t be More then 500')
 	.trim()
 	,
 
