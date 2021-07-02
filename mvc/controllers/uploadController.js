@@ -67,3 +67,10 @@ exports.removeProfilePic =  (req, res, next) =>{
 		})
 	}
 }
+
+exports.postImageUploadController = async (req, res, next) => {
+	if( req.file ){
+	
+	}
+	next()
+}
