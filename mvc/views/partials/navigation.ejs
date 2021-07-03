@@ -1,35 +1,40 @@
-<div class="navbar-wraper">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<a class="navbar-brand" href="/">EXP Blog</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<% if( isLoggedIn ){ %>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="/dashboard">Dashbord</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/auth/logout">logout</a>
-						</li>
-					<% }else{ %>
-						<li class="nav-item">
-							<a class="nav-link" href="/auth/login">Login</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/auth/signup">Signup</a>
-						</li>
-					<% } %>
-				</ul>
-				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
-			</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<div class="container">
+		<a class="navbar-brand" href="#">EX-Blog</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarScroll">
+			<ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+				<% if( isLoggedIn ){ %>
+					<li class="nav-item">
+						<a class="nav-link"  href="/dashboard">Dashboard</a>
+					</li>
+					<li class="nav-item dropdown">
+						<!-- <a class="nav-link active" aria-current="page" href="/dashboard">Dashbord</a> -->
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Profile</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href="/dashboard/edit-profile">Edit Profile</a></li>
+							<li><a class="dropdown-item" href="/auth/logout">logout</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Post</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href="/posts/post">Create Post</a></li>
+						</ul>
+					</li>
+				<% }else{ %>
+					<li class="nav-item">
+						<a class="nav-link" href="/auth/login">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/auth/signup">Signup</a>
+					</li>
+				<% } %>
+			</ul>
+
 		</div>
-	</nav>
-</div>
+  </div>
+</nav>

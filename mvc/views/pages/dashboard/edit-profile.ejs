@@ -22,7 +22,7 @@
 						</form>
 					</div>
 					<div class="card card-body">
-						<form class="row g-3" action="/dashboard/edit-profile" method="POST">
+						<form class="g-3" action="/dashboard/edit-profile" method="POST">
 							<div class="form-group">
 								<label for="inputName" class="form-label">Name</label>
 								<input id="inputName" type="text" class="form-control <%= error.name ? 'is-invalid' : '' %>" name="name" value="<%= value.name ? value.name : '' %>" >

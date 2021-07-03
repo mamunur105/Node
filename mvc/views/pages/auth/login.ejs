@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="col-md-6 offset-md-3  ">
 				<div class="card card-body">
-					<form class="row g-3" action="/auth/login" method="POST">
+					<form class="g-3" action="/auth/login" method="POST">
 						<div class="form-group">
 							<label for="inputEmail4" class="form-label">Email</label>
 							<input type="email" name="email" class="form-control  <%= error.email ? 'is-invalid' : '' %>" id="inputEmail4" value="<%= value.email ? value.email : '' %>">
