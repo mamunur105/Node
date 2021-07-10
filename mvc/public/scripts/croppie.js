@@ -3,6 +3,7 @@
  * Copyright 2019
  * Foliotek
  * Version: 2.6.5
+ * http://foliotek.github.io/Croppie/#documentation
  *************************/
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
