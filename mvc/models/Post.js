@@ -12,6 +12,7 @@ const postSchema = new Schema({
 	},
 	body: {
 		type: String,
+		maxlength: 5000,
 		required: true
 	},
 	author: {

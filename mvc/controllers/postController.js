@@ -17,5 +17,7 @@ exports.createPostGetController = ( req, res, next) => {
 }
 
 exports.createPostPostController = ( req, res, next) => {
+	let errors = validationResult( req ).formatWith( errorFormater )
+	console.log( errors.mapped() );
 	next()
 }
