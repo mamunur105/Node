@@ -18,6 +18,23 @@ exports.createPostGetController = ( req, res, next) => {
 
 exports.createPostPostController = ( req, res, next) => {
 	let errors = validationResult( req ).formatWith( errorFormater )
-	console.log( errors.mapped() );
-	next()
+	let {
+		title,
+		body,
+		tags,
+		thumbnailImage
+	} = req.body
+	if( !errors.isEmpty() ){
+		req.flash('fail', 'Please Check Your form')
+		return 	res.render('pages/dashboard/post/createPost', {
+			title: "Create Post",
+			error: errors.mapped(),
+			value:{
+				title, body, tags, thumbnailImage
+			},
+			flashMessage: Flash.getMessage( req )
+		});
+	}
+	return res.redirect('/dashboard')
+
 }

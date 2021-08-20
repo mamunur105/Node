@@ -8,30 +8,33 @@
 					<form id="profilepicsForm" class="g-3" action="/posts/create" method="POST">
 						<div class="form-group">
 							<label for="inputTitle" class="form-label">Post Title</label>
-							<input id="inputTitle" type="text" class="form-control <%= // error.title ? 'is-invalid' : '' %>" name="title" value="<%= // value.title ? value.title : '' %>" >
+							<input id="inputTitle" type="text" class="form-control <%= error.title ? 'is-invalid' : '' %>" name="title" value="<%=  value.title ? value.title : '' %>" >
 							<div class="invalid-feedback ">
-								<%= // error.title ? error.title : '' %>
+								<%= error.title ? error.title : '' %>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="tiny-mce-post-body" class="form-label">Post Body</label>
-							<textarea name="body" id="tiny-mce-post-body" class="form-control <%= // error.body ? 'is-invalid' : '' %>" value="<%= // value.body ? value.body : '' %>"></textarea>
+							<textarea name="body" id="tiny-mce-post-body" class="form-control <%= error.body ? 'is-invalid' : '' %>" value="<%= value.body ? value.body : '' %>"></textarea>
 							<div class="invalid-feedback ">
-								<%= // error.body ? error.body : '' %>
+								<%=  error.body ? error.body : '' %>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputTags" class="form-label">Post Tags</label>
-							<input id="inputTags" type="text" class="form-control <%= // error.title ? 'is-invalid' : '' %>" name="tags" value="<%= // value.title ? value.title : '' %>" >
+							<input id="inputTags" type="text" class="form-control <%= error.tags ? 'is-invalid' : '' %>" name="tags" value="<%= value.tags ? value.tags : '' %>" >
 							<div class="invalid-feedback ">
-								<%= // error.title ? error.title : '' %>
+								<%= error.tags ? error.tags : '' %>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
+								<input type="file" class="custom-file-input <%= error.thumbnailImage ? 'is-invalid' : '' %>" id="validatedInputGroupCustomFile"  name="thumbnailImage" value="<%= value.thumbnailImage ? value.thumbnailImage : '' %>">
 								<label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+							</div>
+							<div class="invalid-feedback ">
+								<%= error.thumbnailImage ? error.thumbnailImage : '' %>
 							</div>
 						</div>
 
